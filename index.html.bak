@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrhman Ali Gouda - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Pure Black & White Monochrome Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #000;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #000; }
+        }
+
+        /* Navigation */
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 12px 32px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+            padding: 12px 32px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Cards */
+        .card {
+            border: 1px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Skills */
+        .skill-tag {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            border-left: 2px solid #000;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        /* Form */
+        .form-input {
+            background: #fff;
+            border: 2px solid #000;
+            color: #000;
+            padding: 12px 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(0,0,0,0.5);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* Section Spacing */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        @keyframes luxuryFadeIn {
+            0% {
+                opacity: 0;
+                filter: blur(8px) grayscale(100%);
+                transform: translateY(60px) scale(0.98);
+            }
+            60% {
+                filter: grayscale(60%);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0) grayscale(0%);
+                transform: translateY(0) scale(1);
+            }
+        }
+        .animate-luxury {
+            animation: luxuryFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        .animate-luxury-delay {
+            animation: luxuryFadeIn 1.2s 0.3s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        .animate-luxury-delay2 {
+            animation: luxuryFadeIn 1.2s 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white border-b border-black z-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl">AA</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-item text-sm font-medium">Home</a>
+                    <a href="#about" class="nav-item text-sm font-medium">About</a>
+                    <a href="#skills" class="nav-item text-sm font-medium">Skills</a>
+                    <a href="#experience" class="nav-item text-sm font-medium">Experience</a>
+                    <a href="#projects" class="nav-item text-sm font-medium">Projects</a>
+                    <a href="#contact" class="nav-item text-sm font-medium">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black"></span>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-black">
+            <div class="px-6 py-4 space-y-2">
+                <a href="#home" class="block py-2 text-sm font-medium">Home</a>
+                <a href="#about" class="block py-2 text-sm font-medium">About</a>
+                <a href="#skills" class="block py-2 text-sm font-medium">Skills</a>
+                <a href="#experience" class="block py-2 text-sm font-medium">Experience</a>
+                <a href="#projects" class="block py-2 text-sm font-medium">Projects</a>
+                <a href="#contact" class="block py-2 text-sm font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <div class="fade-in">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6">Abdelrhman Ali Gouda</h1>
+                <div class="text-xl md:text-2xl mb-8 typewriter">Software Engineer || Backend Developer</div>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Building scalable backend systems and innovative solutions with .NET, C#, and modern web technologies.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn-secondary">View Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="slide-left">
+                    <p class="text-lg leading-relaxed mb-6 animate-luxury">
+                        I'm a passionate <span class="font-bold underline decoration-black decoration-2">Full Stack Developer</span> specializing in <span class="font-bold">.NET technologies</span>, with a strong interest in <span class="italic">clean architecture</span> and <span class="italic">AI integration</span>.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6 animate-luxury-delay">
+                        I love building real-world solutions—from <span class="font-semibold">smart booking systems</span> to <span class="font-semibold">AI-powered veterinary platforms</span>.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-8 animate-luxury-delay2">
+                        I’m always learning, improving, and exploring new technologies like <span class="font-bold">OCR</span>, <span class="font-bold">AI chatbots</span>, and <span class="font-bold">SaaS platforms</span>. My goal is to create impactful software that solves real problems and makes life easier for users.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6 animate-luxury">
+                        I'm a passionate <span class="font-bold underline decoration-black decoration-2">Full Stack Developer</span> specializing in <span class="font-bold">.NET technologies</span>, with a strong interest in <span class="italic">clean architecture</span> and <span class="italic">AI integration</span>.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6 animate-luxury-delay">
+                        I love building real-world solutions—from <span class="font-semibold">smart booking systems</span> to <span class="font-semibold">AI-powered veterinary platforms</span>.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-8 animate-luxury-delay2">
+                        I'm always learning, improving, and exploring new technologies like <span class="font-bold">OCR</span>, <span class="font-bold">AI chatbots</span>, and <span class="font-bold">SaaS platforms</span>. My goal is to create impactful software that solves real problems and makes life easier for users.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="https://github.com/abdelrhman-ali-official" target="_blank" class="text-black hover:opacity-70 transition-opacity">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/abdelrhman_ali_official/" target="_blank" class="text-black hover:opacity-70 transition-opacity">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/abdelrhman-ali1" target="_blank" class="text-black hover:opacity-70 transition-opacity">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-right">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold">4+</div>
+                            <div class="text-sm">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold">5+</div>
+                            <div class="text-sm">Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold">5+</div>
+                            <div class="text-sm">Certifications</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold">2025</div>
+                            <div class="text-sm">Graduate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-white border-t border-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="section-title">Skills</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-xl font-semibold mb-6">Programming</h3>
+                    <div class="space-y-3">
+                        <div class="skill-tag">C#</div>
+                        <div class="skill-tag">C++</div>
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">JavaScript</div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-xl font-semibold mb-6">Backend</h3>
+                    <div class="space-y-3">
+                        <div class="skill-tag">.NET Framework</div>
+                        <div class="skill-tag">RESTful API</div>
+                        <div class="skill-tag">Entity Framework</div>
+                        <div class="skill-tag">SignalR</div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-xl font-semibold mb-6">Database</h3>
+                    <div class="space-y-3">
+                        <div class="skill-tag">SQL Server</div>
+                        <div class="skill-tag">MongoDB</div>
+                        <div class="skill-tag">Redis</div>
+                        <div class="skill-tag">LINQ</div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-xl font-semibold mb-6">Tools</h3>
+                    <div class="space-y-3">
+                        <div class="skill-tag">Git/GitHub</div>
+                        <div class="skill-tag">Docker</div>
+                        <div class="skill-tag">Visual Studio</div>
+                        <div class="skill-tag">Postman</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding bg-white border-t border-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-12">
+                <div class="fade-in">
+                    <div class="timeline-item">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">IBM Hackathon</h3>
+                            <div class="text-sm opacity-70">Las Vegas, USA (Remote) • Aug 2024 – Oct 2024</div>
+                            <div class="font-medium mt-1">Cybersecurity, AI & IBM Cloud Training</div>
+                        </div>
+                        <ul class="space-y-2">
+                            <li>• Learned cybersecurity engineering concepts</li>
+                            <li>• Trained AI models using IBM Watson</li>
+                            <li>• Managed data on IBM Cloud platform</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="timeline-item">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Araby.Ai Workshop</h3>
+                            <div class="text-sm opacity-70">Saudi Arabia (Remote) • Aug 2024</div>
+                            <div class="font-medium mt-1">AI Tools in Programming</div>
+                        </div>
+                        <p>Enhanced software development using AI tools to improve performance and reduce costs.</p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="timeline-item">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Computer Science Student</h3>
+                            <div class="text-sm opacity-70">Shorouk Academy, Cairo • Oct 2021 – Jun 2025</div>
+                            <div class="font-medium mt-1">Bachelor Degree</div>
+                        </div>
+                        <p>Comprehensive study of software engineering and modern development practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-white border-t border-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 fade-in">
+                    <h3 class="text-xl font-semibold mb-3">Bitary</h3>
+                    <p class="text-sm opacity-70 mb-4">Veterinary Care System</p>
+                    <p class="mb-6">Full-featured platform with AI chatbot, OCR prescription scanning, and automated medication reminders.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs border border-black px-2 py-1">C#</span>
+                        <span class="text-xs border border-black px-2 py-1">.NET</span>
+                        <span class="text-xs border border-black px-2 py-1">AI</span>
+                        <span class="text-xs border border-black px-2 py-1">OCR</span>
+                    </div>
+                </div>
+                <div class="card p-8 fade-in">
+                    <h3 class="text-xl font-semibold mb-3">Elite</h3>
+                    <p class="text-sm opacity-70 mb-4">Real Estate Platform</p>
+                    <p class="mb-6">Platform with real-time chat, smart data scraping, and role-based access control.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs border border-black px-2 py-1">C#</span>
+                        <span class="text-xs border border-black px-2 py-1">SignalR</span>
+                        <span class="text-xs border border-black px-2 py-1">Python</span>
+                    </div>
+                </div>
+                <div class="card p-8 fade-in">
+                    <h3 class="text-xl font-semibold mb-3">Talabat</h3>
+                    <p class="text-sm opacity-70 mb-4">Food Delivery Platform</p>
+                    <p class="mb-6">Food ordering platform with restaurant browsing and JWT-secured access.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs border border-black px-2 py-1">C#</span>
+                        <span class="text-xs border border-black px-2 py-1">.NET</span>
+                        <span class="text-xs border border-black px-2 py-1">JWT</span>
+                    </div>
+                </div>
+                <div class="card p-8 fade-in">
+                    <h3 class="text-xl font-semibold mb-3">Organic Store</h3>
+                    <p class="text-sm opacity-70 mb-4">E-Commerce Platform</p>
+                    <p class="mb-6">Online store with secure checkout and comprehensive order management.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs border border-black px-2 py-1">C#</span>
+                        <span class="text-xs border border-black px-2 py-1">JavaScript</span>
+                        <span class="text-xs border border-black px-2 py-1">JWT</span>
+                    </div>
+                </div>
+                <div class="card p-8 fade-in">
+                    <h3 class="text-xl font-semibold mb-3">Al-Ahly Magazine</h3>
+                    <p class="text-sm opacity-70 mb-4">Sports News Platform</p>
+                    <p class="mb-6">Sports magazine with secure editor and admin control systems.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs border border-black px-2 py-1">C#</span>
+                        <span class="text-xs border border-black px-2 py-1">.NET</span>
+                        <span class="text-xs border border-black px-2 py-1">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-black text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="fade-in">
+                <h2 class="section-title text-white">Contact</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="slide-left">
+                    <h3 class="text-2xl font-semibold mb-6">Let's Work Together</h3>
+                    <p class="text-lg mb-8 opacity-90">
+                        Ready to collaborate on your next project. Whether you need backend development, 
+                        system architecture, or technical consultation.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            <a href="mailto:abdelrhmanali2119@gmail.com" class="hover:opacity-70 transition-opacity">abdelrhmanali2119@gmail.com</a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>+201142029061</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Cairo, Egypt</span>
+                        </div>
+                    </div>
+                    </div>
+                <div class="slide-in-right">
+                    <form class="space-y-6" onsubmit="handleSubmit(event)">
+                        <div>
+                            <input type="text" placeholder="Your Name" required 
+                                   class="w-full bg-gray-800 text-white px-4 py-3 border border-gray-700 focus:border-white focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" required
+                                   class="w-full bg-gray-800 text-white px-4 py-3 border border-gray-700 focus:border-white focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="5" required
+                                      class="w-full bg-gray-800 text-white px-4 py-3 border border-gray-700 focus:border-white focus:outline-none transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-white text-black py-3 font-semibold hover:bg-gray-200 transition-colors duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">© 2024 Abdelrhman Ali Gouda. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/abdelrhman-ali-official" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/abdelrhman_ali_official/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/abdelrhman-ali1" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const name = formData.get('name') || event.target.querySelector('input[type="text"]').value;
+            const email = formData.get('email') || event.target.querySelector('input[type="email"]').value;
+            const message = formData.get('message') || event.target.querySelector('textarea').value;
+            
+            // Create mailto link
+            const subject = encodeURIComponent(`Message from ${name} via Portfolio`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:abdelrhmanali2119@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client should open now.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('font-bold');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('font-bold');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
